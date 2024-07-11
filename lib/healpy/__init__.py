@@ -75,6 +75,7 @@ from .visufunc import (
     orthview,
     azeqview,
 )
+from .newvisufunc import projview, newprojplot
 from .zoomtool import mollzoom, set_g_clim
 from .fitsfunc import write_map, read_map, read_alm, write_alm, write_cl, read_cl
 
