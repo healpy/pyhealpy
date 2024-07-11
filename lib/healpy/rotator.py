@@ -25,8 +25,8 @@ log = logging.getLogger("healpy")
 from astropy.coordinates import SkyCoord
 from .utils.deprecation import deprecated_renamed_argument
 from . import pixelfunc
-from . import sphtfunc
-from ._sphtools import rotate_alm
+sphtfunc = None
+rotate_alm = None
 
 coordname = {"G": "Galactic", "E": "Ecliptic", "C": "Equatorial"}
 

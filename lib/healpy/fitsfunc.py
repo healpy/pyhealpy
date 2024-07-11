@@ -31,7 +31,6 @@ import numpy as np
 from .utils.deprecation import deprecated_renamed_argument
 
 from . import pixelfunc
-from .sphtfunc import Alm
 from .pixelfunc import UNSEEN
 from . import cookbook as cb
 from .utils.deprecation import deprecated

@@ -31,7 +31,7 @@ import numpy as np
 import copy
 import os
 
-from ._healpy_pixel_lib import UNSEEN
+UNSEEN = -1.6375e30
 
 pi = np.pi
 dtor = pi / 180.0

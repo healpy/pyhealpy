@@ -105,6 +105,8 @@ try:
 except:
     log.warning("Warning: cannot import _healpy_pixel_lib module")
 
+UNSEEN = -1.6375e30
+
 # We are using 64-bit integer types.
 # nside > 2**29 requires extended integer types.
 max_nside = 1 << 29
@@ -472,14 +474,57 @@ def ang2pix(nside, theta, phi, nest=False, lonlat=False):
 
     check_nside(nside, nest=nest)
 
-    if lonlat:
-        theta, phi = lonlat2thetaphi(theta, phi)
-    check_theta_valid(theta)
-    check_nside(nside, nest=nest)
     if nest:
-        return pixlib._ang2pix_nest(nside, theta, phi)
-    else:
-        return pixlib._ang2pix_ring(nside, theta, phi)
+        raise NotImplementedError
+
+    if lonlat:
+        raise NotImplementedError
+
+    pix = np.empty(theta.shape, dtype=np.int64)
+
+    # Ported from chealpix.c
+    check_theta_valid(theta)
+    twothird=2.0/3.0
+    inv_halfpi=0.6366197723675813430755350534900574
+    z = np.cos(theta)
+    za = np.abs(z)
+    mask = za < twothird
+    tt = np.mod(phi,2*np.pi) * inv_halfpi # in [0,4)
+    # Equatorial region
+    temp1 = nside*(0.5+tt[mask])
+    temp2 = nside*z[mask]*0.75
+    jp = (temp1-temp2).astype(int) # index of  ascending edge line
+    jm = (temp1+temp2).astype(int) # index of descending edge line
+
+    # ring number counted from z=2/3 */
+    ir = nside + 1 + jp - jm # /* in {1,2n+1} */
+    kshift = 1-(ir&1) # /* kshift=1 if ir even, 0 otherwise */
+
+    ip = (jp+jm-nside+kshift+1)/2 # /* in {0,4n-1} */
+    ip = np.mod(ip,4*nside)
+
+    pix[mask] = nside*(nside-1)*2 + (ir-1)*4*nside + ip
+
+    # /* North & South polar caps */
+    mask = np.logical_not(mask)
+    tp = tt[mask]-(tt[mask].astype(int))
+    tmp = nside*np.sqrt(3*(1-za[mask]))
+
+    jp = (tp*tmp).astype(int) # /* increasing edge line index */
+    jm = ((1.0-tp)*tmp).astype(int) # /* decreasing edge line index */
+
+    ir = jp+jm+1 # /* ring number counted from the closest pole */
+    ip = (tt[mask]*ir).astype(int) # /* in {0,4*ir-1} */
+    ip = np.mod(ip,4*ir)
+
+    zpos = (z>0)
+    zposmask = (z[mask] > 0)
+    pix[np.logical_and(mask, zpos)] = 2*ir[zposmask]*(ir[zposmask]-1) + ip[zposmask]
+    zpos = np.logical_not(zpos)
+    zposmask = np.logical_not(zposmask)
+    pix[np.logical_and(mask, zpos)] = 12*nside**2 - 2*ir[zposmask]*(ir[zposmask]+1) + ip[zposmask]
+    return pix
+
 
 
 def pix2ang(nside, ipix, nest=False, lonlat=False):

@@ -24,7 +24,7 @@ import matplotlib
 from . import projaxes as PA
 from . import rotator as R
 import numpy as np
-from ._healpy_pixel_lib import UNSEEN
+UNSEEN = -1.6375e30
 from . import pixelfunc
 
 pi = np.pi

@@ -62,61 +62,21 @@ from .pixelfunc import (
     get_map_size,
 )
 
-from .sphtfunc import (
-    anafast,
-    map2alm_lsq,
-    map2alm,
-    alm2map,
-    Alm,
-    synalm,
-    synfast,
-    smoothing,
-    smoothalm,
-    almxfl,
-    alm2cl,
-    pixwin,
-    alm2map_der1,
-    gauss_beam,
-    bl2beam,
-    beam2bl,
-    check_max_nside,
-    map2alm_spin,
-    alm2map_spin,
-    blm_gauss,
-    resize_alm
-)
-
-from ._query_disc import query_disc, query_strip, query_polygon, boundaries
-from ._pixelfunc import ringinfo, pix2ring
-
-from ._sphtools import rotate_alm
 from .rotator import Rotator, vec2dir, dir2vec
-from ._healpy_pixel_lib import UNSEEN
-
-try:
-    import matplotlib
-except ImportError:
-    pass
-else:
-    from .visufunc import (
-        mollview,
-        graticule,
-        delgraticules,
-        gnomview,
-        projplot,
-        projscatter,
-        projtext,
-        cartview,
-        orthview,
-        azeqview,
-    )
-    from .zoomtool import mollzoom, set_g_clim
-    from .newvisufunc import projview, newprojplot
-
+from .visufunc import (
+    mollview,
+    graticule,
+    delgraticules,
+    gnomview,
+    projplot,
+    projscatter,
+    projtext,
+    cartview,
+    orthview,
+    azeqview,
+)
+from .zoomtool import mollzoom, set_g_clim
 from .fitsfunc import write_map, read_map, read_alm, write_alm, write_cl, read_cl
-from ._masktools import dist2holes_healpy as dist2holes
-from ._hotspots import hotspots_healpy as hotspots
-from ._line_integral_convolution import line_integral_convolution
 
 
 from .utils.deprecation import deprecated
