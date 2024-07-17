@@ -7,7 +7,7 @@
     <script type="text/javascript">
       async function main(){
         let pyodide = await loadPyodide();
-        console.log(pyodide.runPython("micropip.install('dist/healpy.whl'); import healpy; healpy.__version__"));
+        console.log(pyodide.runPython("import micropip; micropip.install('dist/healpy.whl'); import healpy; healpy.__version__"));
       }
       main();
     </script>
