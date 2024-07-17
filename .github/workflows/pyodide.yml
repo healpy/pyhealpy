@@ -40,6 +40,8 @@ jobs:
         run: pip install pyodide-build
       - name: Setup emsdk
         uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.46
       - name: Build with Pyodide
         run: pyodide build
       - name: Setup Pages
