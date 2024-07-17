@@ -49,7 +49,7 @@ jobs:
       - name: Install JupyterLite
         run: pip install jupyterlite
       - name: Jupyterlite build
-        run: jupyter lite build --contents ../test_healpyvis.ipynb --output-dir dist
+        run: jupyter lite build --contents test_healpyvis.ipynb --output-dir dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
