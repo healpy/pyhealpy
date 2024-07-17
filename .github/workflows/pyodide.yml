@@ -44,16 +44,14 @@ jobs:
           version: 3.1.46
       - name: Build with Pyodide
         run: pyodide build
+      - name: Normalize package name
+        run: mv dist/healpy*whl dist/healpy.whl
       - name: Setup Pages
         uses: actions/configure-pages@v5      
-      - name: Install JupyterLite
-        run: pip install jupyterlite
-      - name: Jupyterlite build
-        run: jupyter lite build --contents test_healpyvis.ipynb --output-dir dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
