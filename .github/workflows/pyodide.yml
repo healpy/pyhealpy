@@ -45,7 +45,7 @@ jobs:
       - name: Build with Pyodide
         run: pyodide build
       - name: Normalize package name
-        run: mv dist/healpy*whl dist/healpy.whl
+        run: mv dist/healpy*whl dist/healpy-0.1.0-py3-none-any.whl
       - name: Setup Pages
         uses: actions/configure-pages@v5      
       - name: Upload artifact

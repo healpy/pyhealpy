@@ -10,7 +10,7 @@
 
 	await pyodide.loadPackage("micropip");
 	const micropip = pyodide.pyimport("micropip");
-	await micropip.install('dist/healpy.whl');
+	await micropip.install('dist/healpy-0.1.0-py3-none-any.whl');
 	pyodide.runPython(`
 	  import healpy
 	  print(healpy.__version__)
