@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+      <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      async function main(){
+        let pyodide = await loadPyodide();
+        console.log(pyodide.runPython("micropip.install('dist/healpy.whl'); import healpy; healpy.__version__"));
+      }
+      main();
+    </script>
+  </body>
+</html>
