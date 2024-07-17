@@ -46,11 +46,14 @@ jobs:
         run: pyodide build
       - name: Setup Pages
         uses: actions/configure-pages@v5      
+      - name: Install JupyterLite
+        run: pip install jupyterlite
+      - name: Jupyterlite build
+        run: jupyter lite build --contents test_healpyviz.ipynb --output-dir dist
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
