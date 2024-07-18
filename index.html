@@ -18,7 +18,7 @@
   const version = document.getElementById("healpyversion");
   version.textContent = pyodide.runPython("import healpy as hp; hp.__version__");
 
-	pyodide.runPython(`
+	pyodide.runPythonAsync(`
 import matplotlib
 matplotlib.use("module://matplotlib_pyodide.wasm_backend")
 import healpy as hp
