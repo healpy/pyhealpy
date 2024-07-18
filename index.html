@@ -15,12 +15,14 @@
 	const micropip = pyodide.pyimport("micropip");
 	await micropip.install('dist/healpy-0.1.0-py3-none-any.whl');
 	await micropip.install('matplotlib');
+  const version = document.getElementById("healpyversion");
+  version.textContent = pyodide.runPython("import healpy as hp; hp.__version__");
+
 	pyodide.runPython(`
 import matplotlib
 matplotlib.use("module://matplotlib_pyodide.wasm_backend")
 import healpy as hp
-import js
-js.document.healpyversion.textContent = hp.__version__
+
 import matplotlib.pyplot as plt
 
 # m = hp.read_map(
