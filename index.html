@@ -4,7 +4,10 @@
       <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
   </head>
   <body>
+	  <p><code>healpy</code> version: <code id=healpyversion></code></p>
+
     <script type="text/javascript">
+	          const healpyversion = document.getElementById("healpyversion");
       async function main(){
         let pyodide = await loadPyodide();
 
@@ -16,6 +19,8 @@
 import matplotlib
 matplotlib.use("module://matplotlib_pyodide.wasm_backend")
 import healpy as hp
+import js
+js.document.healpyversion = hp.__version__
 import matplotlib.pyplot as plt
 
 m = hp.read_map(
