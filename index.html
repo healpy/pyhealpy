@@ -21,7 +21,7 @@ import matplotlib
 matplotlib.use("module://matplotlib_pyodide.wasm_backend")
 import healpy as hp
 import js
-js.document.healpyversion = hp.__version__
+js.document.healpyversion.textContent = hp.__version__
 import matplotlib.pyplot as plt
 
 m = hp.read_map(
