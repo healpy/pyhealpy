@@ -21,3 +21,5 @@ dist
 .idea
 .pytest_cache
 .vscode
+.pyodide-xbuildenv/
+*.swn
