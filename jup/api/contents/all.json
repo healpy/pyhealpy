@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2024-07-24T23:29:38.303699Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-24T23:11:58Z",
+      "mimetype": "image/fits",
+      "name": "pixel_num.fits",
+      "path": "pixel_num.fits",
+      "size": 0,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2024-07-24T23:29:38.304699Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2024-07-24T23:06:12.000704Z",
+      "mimetype": null,
+      "name": "visualize_map.ipynb",
+      "path": "visualize_map.ipynb",
+      "size": 2380,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2024-07-24T23:29:38.304699Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2024-07-24T23:29:38.304699Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
