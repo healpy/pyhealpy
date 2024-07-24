@@ -3,5 +3,9 @@
     "piplite_urls": [
 	    "https://healpy.github.io/pyhealpy/dist/healpy-0.1.0-py3-none-any.whl"
     ]
+  },
+  "LiteBuildConfig": {
+    "contents": ["visualize_map.ipynb","pixel_num.fits"],
+    "output_dir": "../jup"
   }
 }
